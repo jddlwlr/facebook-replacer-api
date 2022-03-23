@@ -1,0 +1,25 @@
+{
+  "name": "facebook-replacer-api",
+  "version": "1.0.0",
+  "description": "An API to rule them all",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jddlwlr/facebook-replacer-api.git"
+  },
+  "keywords": [
+    "zukerberg"
+  ],
+  "author": "Jesse Lawler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jddlwlr/facebook-replacer-api/issues"
+  },
+  "homepage": "https://github.com/jddlwlr/facebook-replacer-api#readme"
+}
