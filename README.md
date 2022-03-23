@@ -1,2 +1,2 @@
-# facebook-replacer-api
-A noSQL API to dethrone zuck. 
+# facebook-replacer API
+A NoSQL API to dethrone zuck. 
