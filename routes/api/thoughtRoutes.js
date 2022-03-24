@@ -16,34 +16,27 @@
 
 // DELETE to remove a thought by its _id
 
-const { Thought, User } = require("../../models");
+const router = require("express").Router();
+const {
+  getAllThoughts,
+  getOneThought,
+  newThought,
+  updateThought,
+  deleteThought,
+  addThoughtReaction,
+  deleteThoughtReaction,
+} = require("../../controllers/thoughtController");
 
-module.exports = {
-  // get thoughts - all
-  getAllThoughts(req, res) {
-    Thought.find()
-      .then((thoughts) => res.json(thoughts))
-      .catch((err) => res.status(500).json(err));
-  },
-  //get thoughts - by id
-  getOneThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId })
-      .select("-__v")
-      .then((thought) =>
-        !thought
-          ? res
-              .status(404)
-              .json({ message: "No thought associated with provided ID" })
-          : res.json(thought)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
-  createThought(req, res) {
-    Thought.create(req.body)
-      .then((thought) => res.json(thought))
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
-  },
-};
+router.route("/").get(getAllThoughts).post(newThought);
+
+router
+  .route("/:thoughtId")
+  .get(getOneThought)
+  .put(updateThought)
+  .delete(deleteThought);
+
+router.route("/:thoughtId/reactions").post(addThoughtReaction);
+
+router.route("/:thoughtId/reactions/:reactionId").delete(deleteThoughtReaction);
+
+module.exports = router;
