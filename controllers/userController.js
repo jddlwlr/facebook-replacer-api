@@ -1,5 +1,7 @@
 const { User, Thought } = require("../models");
 
+//starter code below - EDIT
+
 // Aggregate function to get the number of students overall
 const headCount = async () =>
   Student.aggregate()
