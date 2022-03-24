@@ -20,11 +20,13 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  //new user
   createUser(req, res) {
     User.create(req.body)
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(500).json(err));
   },
+  //update a user
   updateUser(req, res) {
     User.findOneAndUpdate({ _id: req.params.userId })
       .then((user) =>
@@ -34,6 +36,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  //delete a user
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
       .then((user) =>
@@ -43,6 +46,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  //add a friend
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -56,6 +60,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  //de;ete a friend
   deleteFriend(req, res) {
     User.findOneAndDelete(
       { _id: req.params.userId },
@@ -70,21 +75,3 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 };
-
-// Remove assignment from a student
-//   removeAssignment(req, res) {
-//     Student.findOneAndUpdate(
-//       { _id: req.params.studentId },
-//       { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
-//       { runValidators: true, new: true }
-//     )
-//       .then((student) =>
-//         !student
-//           ? res
-//               .status(404)
-//               .json({ message: "No student found with that ID :(" })
-//           : res.json(student)
-//       )
-//       .catch((err) => res.status(500).json(err));
-//   },
-// };
